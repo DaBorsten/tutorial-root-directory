@@ -1,16 +1,21 @@
 
-const cds = require('@sap/cds')
+const cds = require('@sap/cds');
 
 /**
  * Implementation for Risk Management service defined in ./risk-service.cds
  */
-module.exports = cds.service.impl(async function() {
-    this.after('READ', 'Risks', risksData => {
+module.exports = cds.service.impl(async function ()
+{
+    this.after('READ', 'Risks', risksData =>
+    {
         const risks = Array.isArray(risksData) ? risksData : [risksData];
-        risks.forEach(risk => {
-            if (risk.impact >= 100000) {
+        risks.forEach(risk =>
+        {
+            if (risk.impact >= 100000)
+            {
                 risk.criticality = 1;
-            } else {
+            } else
+            {
                 risk.criticality = 2;
             }
         });
