@@ -19,7 +19,7 @@ jobs:
           node-version: '14'
 
       - name: Install Dependencies
-        run: cd cpapp && npm install && brew install cloudfoundry/tap/cf-cli
+        run: cd cpapp && npm install && curl -L "https://packages.cloudfoundry.org/stable?release=linux64-binary&version=v8&source=github" | tar -zx && mv cf /usr/local/bin && sudo curl -o /usr/share/bash-completion/completions/cf8 https://raw.githubusercontent.com/cloudfoundry/cli-ci/master/ci/installers/completion/cf8
         
       - name: Deploy
         run: cd cpapp/app/risks && cf deploy cpapp_1.0.0.mtar
