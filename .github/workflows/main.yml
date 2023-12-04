@@ -22,7 +22,7 @@ jobs:
         run: cd cpapp && npm install && curl -L "https://packages.cloudfoundry.org/stable?release=linux64-binary&version=v8&source=github" | tar -zx && mv cf /usr/local/bin && sudo curl -o /usr/share/bash-completion/completions/cf8 https://raw.githubusercontent.com/cloudfoundry/cli-ci/master/ci/installers/completion/cf8
 
       - name: CF Login
-        run: /usr/local/bin/cf login -u ${{ secrets.CF_EMAIL }} -p "${{ secrets.CF_PASSWORD }}" && 2
+        run: ../../../../usr/local/bin/cf login -u ${{ secrets.CF_EMAIL }} -p "${{ secrets.CF_PASSWORD }}" && 2
 
       - name: Deploy
-        run: cd cpapp/app/risks && cf deploy cpapp_1.0.0.mtar
+        run: cd cpapp/app/risks && ../../../../usr/local/bin/cf deploy cpapp_1.0.0.mtar
