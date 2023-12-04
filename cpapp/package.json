@@ -1,68 +1,72 @@
 {
-  "name": "cpapp",
-  "version": "1.0.0",
-  "description": "A simple CAP project.",
-  "repository": "<Add your repository here>",
-  "license": "UNLICENSED",
-  "private": true,
-  "dependencies": {
-    "@sap/cds": "^7",
-    "@sap/cds-hana": "^2",
-    "@sap/xsenv": "^4.2.0",
-    "@sap/xssec": "^3",
-    "express": "^4",
-    "passport": "^0"
-  },
-  "devDependencies": {
-    "@cap-js/sqlite": "^1",
-    "@sap/cds-dk": "^7",
-    "@sap/ux-specification": "^1.120.0"
-  },
-  "engines": {
-    "node": "^20"
-  },
-  "scripts": {
-    "start": "cds-serve",
-    "watch-risks": "cds watch --open risks/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-mitigations": "cds watch --open mitigations/webapp/index.html?sap-ui-xx-viewCache=false"
-  },
-  "sapux": [
-    "app/risks"
-  ],
-  "cds": {
-    "requires": {
-      "[production]": {
-        "db": {
-          "kind": "hana-cloud"
-        },
-        "auth": {
-          "kind": "xsuaa"
-        }
-      },
-      "db": {
-        "kind": "sql"
-      },
-      "[development]": {
-        "auth": {
-          "kind": "mocked",
-          "users": {
-            "risk.viewer@tester.sap.com": {
-              "password": "initial",
-              "ID": "risk.viewer@tester.sap.com",
-              "roles": [
-                "RiskViewer"
-              ]
+    "name": "cpapp",
+    "version": "1.0.0",
+    "description": "A simple CAP project.",
+    "repository": "<Add your repository here>",
+    "license": "UNLICENSED",
+    "private": true,
+    "dependencies": {
+        "@sap/cds": "^7",
+        "@sap/cds-hana": "^2",
+        "@sap/xsenv": "^4.2.0",
+        "@sap/xssec": "^3",
+        "express": "^4",
+        "passport": "^0"
+    },
+    "devDependencies": {
+        "@cap-js/sqlite": "^1",
+        "@sap/cds-dk": "^7",
+        "@sap/ux-specification": "^1.120.0",
+        "rimraf": "^3.0.2"
+    },
+    "engines": {
+        "node": "^20"
+    },
+    "scripts": {
+        "start": "cds-serve",
+        "watch-risks": "cds watch --open risks/webapp/index.html?sap-ui-xx-viewCache=false",
+        "watch-mitigations": "cds watch --open mitigations/webapp/index.html?sap-ui-xx-viewCache=false",
+        "undeploy": "cf undeploy undefined --delete-services --delete-service-keys --delete-service-brokers",
+        "build": "rimraf resources mta_archives && mbt build --mtar archive",
+        "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+    },
+    "sapux": [
+        "app/risks"
+    ],
+    "cds": {
+        "requires": {
+            "[production]": {
+                "db": {
+                    "kind": "hana-cloud"
+                },
+                "auth": {
+                    "kind": "xsuaa"
+                }
             },
-            "risk.manager@tester.sap.com": {
-              "password": "initial",
-              "ID": "risk.manager@tester.sap.com",
-              "roles": [
-                "RiskManager"
-              ]
+            "db": {
+                "kind": "sql"
+            },
+            "[development]": {
+                "auth": {
+                    "kind": "mocked",
+                    "users": {
+                        "risk.viewer@tester.sap.com": {
+                            "password": "initial",
+                            "ID": "risk.viewer@tester.sap.com",
+                            "roles": [
+                                "RiskViewer"
+                            ]
+                        },
+                        "risk.manager@tester.sap.com": {
+                            "password": "initial",
+                            "ID": "risk.manager@tester.sap.com",
+                            "roles": [
+                                "RiskManager"
+                            ]
+                        }
+                    }
+                }
             }
-          }
         }
-      }
     }
-  }
 }

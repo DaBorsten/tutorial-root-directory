@@ -8,9 +8,7 @@ build-parameters:
   before-all:
     - builder: custom
       commands:
-        - npm install --production
         - npx cds build --production
-        - npx rimraf gen/db/src/gen/data
 modules:
   - name: cpapp-srv
     type: nodejs
@@ -24,7 +22,7 @@ modules:
         properties:
           srv-url: ${default-url}
     requires:
-      - name: cpapp-uss
+      - name: cpapp-uaa
       - name: cpapp-db
 
   - name: cpapp-db-deployer
