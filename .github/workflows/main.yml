@@ -19,7 +19,13 @@ jobs:
           node-version: '14'
 
       - name: Install Dependencies
-        run: cd cpapp && npm install && curl -L "https://packages.cloudfoundry.org/stable?release=linux64-binary&version=v8&source=github" | tar -zx && mv cf /usr/local/bin && sudo curl -o /usr/share/bash-completion/completions/cf8 https://raw.githubusercontent.com/cloudfoundry/cli-ci/master/ci/installers/completion/cf8
+        run: |
+          cd cpapp
+          npm install
+          curl -L "https://packages.cloudfoundry.org/stable?release=linux64-binary&version=v8&source=github" | tar -zx
+          sudo mv cf /usr/local/bin
+          sudo curl -o /usr/share/bash-completion/completions/cf8 https://raw.githubusercontent.com/cloudfoundry/cli-ci/master/ci/installers/completion/cf8
+          cf --version  # Check Cloud Foundry CLI version for debugging
 
       - uses: citizen-of-planet-earth/cf-cli-action@master
         with:
