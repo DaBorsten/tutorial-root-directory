@@ -21,5 +21,13 @@ jobs:
       - name: Install Dependencies
         run: cd cpapp && npm install && curl -L "https://packages.cloudfoundry.org/stable?release=linux64-binary&version=v8&source=github" | tar -zx && mv cf /usr/local/bin && sudo curl -o /usr/share/bash-completion/completions/cf8 https://raw.githubusercontent.com/cloudfoundry/cli-ci/master/ci/installers/completion/cf8
 
+      - uses: citizen-of-planet-earth/cf-cli-action@master
+        with:
+          cf_api: ${{ secrets.CF_API }}
+          cf_username: ${{ secrets.CF_EMAIL }}
+          cf_password: ${{ secrets.CF_PASSWORD }}
+          cf_org: ${{ secrets.CF_ORG }}
+          cf_space: ${{ secrets.CF_SPACE }}
+
       - name: CF Login
-        run: cd ../../../../usr/local/bin/ && cf login -u ${{ secrets.CF_EMAIL }} -p "${{ secrets.CF_PASSWORD }}" && 2 && cf deploy cpapp_1.0.0.mtar
+        run: cd cpapp && cf deploy cpapp_1.0.0.mtar
