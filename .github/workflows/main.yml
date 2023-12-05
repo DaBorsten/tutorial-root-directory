@@ -26,14 +26,11 @@ jobs:
           sudo mv cf /usr/local/bin
           sudo curl -o /usr/share/bash-completion/completions/cf8 https://raw.githubusercontent.com/cloudfoundry/cli-ci/master/ci/installers/completion/cf8
 
-      - uses: citizen-of-planet-earth/cf-cli-action@master
-        with:
-          cf_api: ${{ secrets.CF_API }}
-          cf_username: ${{ secrets.CF_EMAIL }}
-          cf_password: ${{ secrets.CF_PASSWORD }}
-          cf_org: ${{ secrets.CF_ORG }}
-          cf_space: ${{ secrets.CF_SPACE }}
-          command: |
-            cd cpapp
-            export PATH=$PATH:/usr/local/bin
-            cf deploy cpapp_1.0.0.mtar
+      - name: CF Login
+        run: cf login -a ${{ secrets.CF_API }} -u ${{ secrets.CF_EMAIL }} -p ${{ secrets.CF_PASSWORD }} -o ${{ secrets.CF_ORG }} -s ${{ secrets.CF_SPACE }}
+
+      - name: Deploy
+        run: |
+          cd cpapp
+          export PATH=$PATH:/usr/local/bin
+          cf deploy cpapp_1.0.0.mtar
