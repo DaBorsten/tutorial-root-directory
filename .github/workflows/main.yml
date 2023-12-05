@@ -22,6 +22,7 @@ jobs:
         run: |
           cd cpapp
           npm install
+          sudo npm install --global mbt
 
       - name: Set up Cloud Foundry CLI
         run: |
