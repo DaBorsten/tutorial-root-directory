@@ -38,6 +38,4 @@ jobs:
         run: cf install-plugin multiapps -f
 
       - name: Deploy
-        run: |
-          cd cpapp
-          cf deploy cpapp_1.0.0.mtar
+        run: cd cpapp && cf deploy cpapp_1.0.0.mtar
