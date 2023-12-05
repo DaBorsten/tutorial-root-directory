@@ -28,4 +28,10 @@ jobs:
           cf_password: ${{ secrets.CF_PASSWORD }}
           cf_org: ${{ secrets.CF_ORG }}
           cf_space: ${{ secrets.CF_SPACE }}
-          command: cd cpapp && cf deploy cpapp_1.0.0.mtar
+          command: cf deploy cpapp_1.0.0.mtar
+
+      - name: Change Directory and Deploy
+        run: |
+          cd cpapp
+          cf deploy cpapp_1.0.0.mtar
+          working-directory: ${{ github.workspace }}
