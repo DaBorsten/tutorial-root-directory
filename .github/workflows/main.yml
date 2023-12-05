@@ -37,5 +37,5 @@ jobs:
       - name: Deploy
         run: |
           cd cpapp
-          cf version
+          cf install-plugin multiapps
           cf deploy cpapp_1.0.0.mtar
