@@ -24,7 +24,7 @@ jobs:
           npm install
 
       - name: Set up Cloud Foundry CLI
-        uses: cloudfoundry/cli@v8
+        uses: cloudfoundry/cli@v7
         with:
           version: latest
 
