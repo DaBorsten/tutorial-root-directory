@@ -31,7 +31,7 @@ jobs:
           sudo apt-get install cf8-cli
 
       - name: CF Login
-        run: cf login -a ${{ secrets.CF_API }} -u ${{ secrets.CF_EMAIL }} -p ${{ secrets.CF_PASSWORD }} -o ${{ secrets.CF_ORG }} -s ${{ secrets.CF_SPACE }}
+        run: cf login -u ${{ secrets.CF_EMAIL }} -p "${{ secrets.CF_PASSWORD }}" -o "${{ secrets.CF_ORG }}" -s "${{ secrets.CF_SPACE }}"
 
       - name: Deploy
         run: |
