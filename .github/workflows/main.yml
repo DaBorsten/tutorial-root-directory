@@ -22,12 +22,14 @@ jobs:
         run: |
           cd cpapp
           npm install
-          curl -L "https://packages.cloudfoundry.org/stable?release=linux64-binary&version=v8&source=github" | tar -zx
-          sudo mv cf /usr/local/bin
-          sudo curl -o /usr/share/bash-completion/completions/cf8 https://raw.githubusercontent.com/cloudfoundry/cli-ci/master/ci/installers/completion/cf8
+
+      - name: Set up Cloud Foundry CLI
+        uses: cloudfoundry/cli@v8
+        with:
+          version: latest
 
       - name: CF Login
-        run: echo $PATH && cf login -a ${{ secrets.CF_API }} -u ${{ secrets.CF_EMAIL }} -p ${{ secrets.CF_PASSWORD }} -o ${{ secrets.CF_ORG }} -s ${{ secrets.CF_SPACE }}
+        run: cf login -a ${{ secrets.CF_API }} -u ${{ secrets.CF_EMAIL }} -p ${{ secrets.CF_PASSWORD }} -o ${{ secrets.CF_ORG }} -s ${{ secrets.CF_SPACE }}
 
       - name: Deploy
         run: |
