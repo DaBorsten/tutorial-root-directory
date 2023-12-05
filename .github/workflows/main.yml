@@ -38,4 +38,6 @@ jobs:
         run: cf install-plugin multiapps -f && cf plugins
 
       - name: Deploy
-        run: cf deploy cpapp/cpapp_1.0.0.mtar
+        run: |
+          echo "Aktueller Pfad: $(pwd)"
+          cf deploy cpapp/cpapp_1.0.0.mtar
