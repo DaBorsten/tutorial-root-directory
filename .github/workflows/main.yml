@@ -28,15 +28,4 @@ jobs:
           cf_password: ${{ secrets.CF_PASSWORD }}
           cf_org: ${{ secrets.CF_ORG }}
           cf_space: ${{ secrets.CF_SPACE }}
-
-      - name: Install Dependencies
-        run: |
-          cd cpapp
-          npm install
-          curl -L "https://packages.cloudfoundry.org/stable?release=linux64-binary&version=v8&source=github" | tar -zx
-          sudo mv cf /usr/local/bin
-          sudo curl -o /usr/share/bash-completion/completions/cf8 https://raw.githubusercontent.com/cloudfoundry/cli-ci/master/ci/installers/completion/cf8
-          cf --version  # Check Cloud Foundry CLI version for debugging
-
-      - name: CF Login
-        run: cd cpapp && cf deploy cpapp_1.0.0.mtar
+          command: cd cpapp && cf deploy cpapp_1.0.0.mtar
