@@ -33,9 +33,10 @@ jobs:
           cf_password: ${{ secrets.CF_PASSWORD }}
           cf_org: ${{ secrets.CF_ORG }}
           cf_space: ${{ secrets.CF_SPACE }}
+          command: cf7 deploy cpapp_1.0.0.mtar
 
       - name: Change Directory and Deploy
         run: |
           cd cpapp
           export PATH=$PATH:/usr/local/bin
-          cf deploy cpapp_1.0.0.mtar
+          cf8 deploy cpapp_1.0.0.mtar
