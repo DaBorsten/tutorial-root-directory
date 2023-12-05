@@ -37,4 +37,5 @@ jobs:
       - name: Deploy
         run: |
           cd cpapp
+          cf version
           cf deploy cpapp_1.0.0.mtar
