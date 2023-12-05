@@ -35,7 +35,7 @@ jobs:
         run: cf login -a ${{ secrets.CF_API }} -u ${{ secrets.CF_EMAIL }} -p "${{ secrets.CF_PASSWORD }}" -o "${{ secrets.CF_ORG }}" -s "${{ secrets.CF_SPACE }}"
 
       - name: Install Multiapps
-        run: cf install-plugin multiapps -y
+        run: cf install-plugin multiapps -f
 
       - name: Deploy
         run: |
