@@ -27,7 +27,9 @@ jobs:
           sudo curl -o /usr/share/bash-completion/completions/cf8 https://raw.githubusercontent.com/cloudfoundry/cli-ci/master/ci/installers/completion/cf8
 
       - name: CF Login
-        run: cf login -a ${{ secrets.CF_API }} -u ${{ secrets.CF_EMAIL }} -p ${{ secrets.CF_PASSWORD }} -o ${{ secrets.CF_ORG }} -s ${{ secrets.CF_SPACE }}
+        run:  |
+          export PATH=$PATH:/usr/local/bin
+          cf login -a ${{ secrets.CF_API }} -u ${{ secrets.CF_EMAIL }} -p ${{ secrets.CF_PASSWORD }} -o ${{ secrets.CF_ORG }} -s ${{ secrets.CF_SPACE }}
 
       - name: Deploy
         run: |
