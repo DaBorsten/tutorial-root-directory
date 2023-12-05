@@ -39,5 +39,7 @@ jobs:
 
       - name: Deploy
         run: |
+          ls
+          ls cpapp/
           echo "Aktueller Pfad: $(pwd)"
           cf deploy cpapp/cpapp_1.0.0.mtar
