@@ -39,5 +39,6 @@ jobs:
       - name: Change Directory and Deploy
         run: |
           cd cpapp
+          export PATH=$PATH:/usr/local/bin
           cf deploy cpapp_1.0.0.mtar
           working-directory: ${{ github.workspace }}
