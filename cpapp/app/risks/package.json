@@ -10,8 +10,5 @@
   "main": "webapp/index.html",
   "scripts": {
     "deploy-config": "npx -p @sap/ux-ui5-tooling fiori add deploy-config cf"
-  },
-  "dependencies": {
-    "@sap/generator-fiori": "^1.11.5"
   }
 }

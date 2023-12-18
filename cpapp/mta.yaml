@@ -71,6 +71,44 @@ modules:
           existing_destinations_policy: update
     build-parameters:
       no-source: true
+  - name: nsrisks
+    type: html5
+    path: app/risks
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+      - npm install
+      - npm run build:cf
+      supported-platforms: []
+  - name: nsmitigations
+    type: html5
+    path: app/mitigations
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+      - npm install
+      - npm run build:cf
+      supported-platforms: []
+  - name: cpapp-app-content
+    type: com.sap.application.content
+    path: .
+    requires:
+    - name: cpapp-html5-repo-host
+      parameters:
+        content-target: true
+    build-parameters:
+      build-result: resources
+      requires:
+      - artifacts:
+        - nsrisks.zip
+        name: nsrisks
+        target-path: resources/
+      - artifacts:
+        - nsmitigations.zip
+        name: nsmitigations
+        target-path: resources/
 
 resources:
   - name: cpapp-uaa
