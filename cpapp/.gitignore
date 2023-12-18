@@ -15,7 +15,7 @@ target/
 
 # MTA
 *_mta_build_tmp
-*.mtar
+#*.mtar
 mta_archives/
 
 # Other
@@ -34,7 +34,7 @@ mta_archives/
 @cds-models
 
 # Github
-deploy.github/
+#.github/
 
 dist/
 resources/

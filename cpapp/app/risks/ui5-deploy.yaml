@@ -6,3 +6,20 @@ type: application
 resources:
   configuration:
     propertiesFileSourceEncoding: UTF-8
+builder:
+  resources:
+    excludes:
+      - "/test/**"
+      - "/localService/**"
+  customTasks:
+    - name: webide-extension-task-updateManifestJson
+      beforeTask: generateComponentPreload
+      configuration:
+        appFolder: webapp
+        destDir: dist
+    - name: ui5-task-zipper
+      afterTask: generateCachebusterInfo
+      configuration:
+        archiveName: ns.risks
+        additionalFiles:
+          - xs-app.json
