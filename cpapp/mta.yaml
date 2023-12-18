@@ -102,11 +102,11 @@ modules:
       build-result: resources
       requires:
       - artifacts:
-        - nsrisks.zip
+        - ns.risks.zip
         name: nsrisks
         target-path: resources/
       - artifacts:
-        - nsmitigations.zip
+        - ns.mitigations.zip
         name: nsmitigations
         target-path: resources/
 
