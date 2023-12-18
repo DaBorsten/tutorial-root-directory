@@ -81,7 +81,7 @@ modules:
       - npm install
       - npm run build:cf
       supported-platforms: []
-  - name: nsmitigations
+  - name: nsmitigations 
     type: html5
     path: app/mitigations
     build-parameters:
