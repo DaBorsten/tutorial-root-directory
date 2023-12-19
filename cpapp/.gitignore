@@ -36,6 +36,6 @@ mta_archives/
 # Github
 #.github/
 
-dist/
+#dist/
 #resources/
 app/*/package-lock.json
