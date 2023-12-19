@@ -26,6 +26,7 @@ modules:
     requires:
       - name: cpapp-uaa
       - name: cpapp-db
+      - name: cpapp-logs
 
   - name: cpapp-db-deployer
     type: hdb
@@ -34,6 +35,7 @@ modules:
       buildpack: nodejs_buildpack
     requires:
       - name: cpapp-db
+      - name: cpapp-logs
   - name: cpapp-destinations
     type: com.sap.application.content
     requires:
@@ -146,3 +148,8 @@ resources:
     parameters:
       service: html5-apps-repo
       service-plan: app-host
+  - name: cpapp-logs
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: application-logs
+      service-plan: lite
