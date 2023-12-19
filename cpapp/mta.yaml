@@ -35,7 +35,7 @@ modules:
       buildpack: nodejs_buildpack
     requires:
       - name: cpapp-db
-      - name: cpapp-logs 
+      - name: cpapp-logs
   - name: cpapp-destinations
     type: com.sap.application.content
     requires:
