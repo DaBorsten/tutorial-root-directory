@@ -1,13 +1,13 @@
 {
-  "Component-preload.js": 1702974086801,
-  "Component.js": 1701351713000,
-  "manifest.json": 1702974086438,
-  "Component-dbg.js": 1701351713000,
-  "Component.js.map": 1702974086394,
-  "i18n/i18n.properties": 1701349138672,
-  "Component-preload.js.map": 1702974086801,
   "ui5.yaml": 1702973895066,
+  "manifest.json": 1702975982579,
+  "Component.js": 1701351713000,
+  "Component-dbg.js": 1701351713000,
+  "Component.js.map": 1702975982541,
+  "Component-preload.js": 1702975982925,
+  "Component-preload.js.map": 1702975982925,
+  "i18n/i18n.properties": 1701349138672,
   "ui5-deploy.yaml": 1702904776279,
   "manifest-bundle.zip": 1702904861091,
-  "index.html": 1701351714097
+  "index.html": 1702975850349
 }
